@@ -1,0 +1,124 @@
+ <?php
+
+?>
+<html>
+<head>
+    <title>Safe</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--script src="/jquery.js"></script-->
+    <!--script src="/bootstrap.js"></script-->
+    <!--link rel="stylesheet" href="/bootstrap.css"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <link rel="shortcut icon" href="https://img.icons8.com/dusk/344/safe-in.png" type="image/x-icon">
+      <link href="https://allfont.net/allfont.css?fonts=digital-7-mono" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <style type="text/css">
+        .buttt{
+            height: 300px; 
+            max-width:300px;
+            padding: 5px;
+            text-align: center;
+            border: solid 2px grey;
+			float:left;
+            font-size: 70px;
+        }
+        
+        .container{
+            
+        }
+        #inputField{
+            font-size: 70px;
+            font-family: monospace;
+            color: green;
+            /*background: #14D100;*/
+			background: black;
+            border: solid 4px green;
+			text-align:center;
+        }
+        .buttons{
+            text-align: center;
+			margin-top: 20px;
+        }
+		
+		.inputDiv{
+			/*text-align:center;*/
+			/*margin-top: 5%;
+			padding-left: 25%;
+			padding-right: 25%;*/
+            border: 5px solid grey;
+            /*margin:10%;*/
+		}
+        
+    </style>
+    <div class="inputDiv">
+        <input id="inputField" class="form-control" maxlength="4" readonly>
+        <div class="buttons container">
+            <div class="row">
+                <button class="btn buttt dig col-md-4" id="1">1</button>
+                <button class="btn buttt dig col-md-4" id="2">2</button>
+                <button class="btn buttt dig col-md-4" id="3">3</button>
+            </div >
+            <div class="row">
+                <button class="btn buttt dig col-md-4" id="4">4</button>
+                <button class="btn buttt dig col-md-4" id="5">5</button>
+                <button class="btn buttt dig col-md-4" id="6">6</button>
+            </div>
+            <div class="row">
+                <button class="btn buttt dig col-md-4" id="7">7</button>
+                <button class="btn buttt dig col-md-4" id="8">8</button>
+                <button class="btn buttt dig col-md-4" id="9">9</button>
+            </div>
+            <div class="row">
+                <!--button class="btn buttt" id="12">Enter</button-->
+				<div class='col-md-4 buttt'></div>
+                <button class="btn buttt dig col-md-4" id="0">0</button>
+                <button class="btn buttt col-md-4" id="11">Clear</button>
+			</div>
+        </div>
+    </div>
+    <script>
+        var counter = 0;
+        function playAudio(path){
+            audio = new Audio(path);
+            audio.play();
+        }
+        
+        $('.dig').click(function(){
+            playAudio('sound/' + $(this).attr("id") + '.mp3');
+            $('#inputField').val($('#inputField').val() + $(this).attr("id"));
+            console.log($(this).attr("id"));
+            counter++;
+            console.log(counter);
+            if(counter == 4){
+                if($('#inputField').val() == "1996"){
+                    //alert("666ENВор");
+                    $('#inputField').val("666ENВор");
+                    counter = 0;
+                }else{
+                    $('#inputField').val("ЗАПРЕЩЕНО");
+                    $('#inputField').val("");
+                    counter = 0;
+                }
+            }
+        });
+        
+        $('#11').click(function(){
+            playAudio('sound/11.mp3');
+            $('#inputField').val("");
+            counter=0;
+        });
+        
+        /*$('#12').click(function(){
+            playAudio('sound/12.mp3');
+            if($('#inputField').val() == "1996"){
+                alert("666ENВор");
+                $('#inputField').val("");
+            }else{
+                alert('ЗАПРЕЩЕНО');
+                $('#inputField').val("");
+            }
+        });*/
+	</script>
+</body>
+</html>
